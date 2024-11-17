@@ -73,6 +73,7 @@ export async function signInAccount(user: { email: string; password: string }) {
         }
     } catch (error) {
         // Si aucune session active, on peut créer une nouvelle session
+        // @ts-ignore 
         if (error.code === 401) { // Code d'erreur pour session non active
             try {
                 const session = await account.createEmailPasswordSession(user.email, user.password);
@@ -182,6 +183,7 @@ export function getFilePreview(fileId: string) {
         fileId,
         2000,
         2000,
+        // @ts-ignore 
         "top",
         100
       );
@@ -310,6 +312,7 @@ export async function updatePost(post: IUpdatePost) {
         throw Error;
       }
 
+      // @ts-ignore 
       image = {...image, imageUrl : fileUrl, imageId : uploadedFile.$id}
     }
 

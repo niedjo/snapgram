@@ -1,7 +1,6 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { Button } from '../ui/button'
-import { signOutAccount } from '@/lib/appwrite/api'
 import { useSignOutAccount } from '@/lib/react-query/queryAndMutations'
 import { useUserContext } from '@/context/AuthContext'
 

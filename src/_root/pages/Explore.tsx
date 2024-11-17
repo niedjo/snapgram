@@ -4,7 +4,7 @@ import SearchResult from "@/components/shared/SearchResult";
 import { Input } from "@/components/ui/input"
 import useDebounce from "@/hooks/useDebounce";
 import { useGetPost, useSearchPost } from "@/lib/react-query/queryAndMutations";
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useState } from "react"
 import { useInView } from "react-intersection-observer";
 
 const Explore = () => {
@@ -30,7 +30,7 @@ const Explore = () => {
   )
 
   const shouldShowSearchResults = searchValue !== '';
-  const shouldShowPosts = !shouldShowSearchResults && posts.pages.every((item) => item.documents.length === 0)
+  const shouldShowPosts = !shouldShowSearchResults && posts.pages.every((item) => item?.documents.length === 0)
 
   return (
     <div className="explore-container">
@@ -63,10 +63,12 @@ const Explore = () => {
 
       <div className="flex flex-wrap gap-9 w-full max-w-5xl">
         {shouldShowSearchResults ? (
+          // @ts-ignore 
           <SearchResult isSearchFetching={isSearchFetching} searchPosts={searchPosts} />
         ) : shouldShowPosts ? (
           <p className="text-light-4 mt-10 text-center w-full">End of post</p>
         ) : posts.pages.map((item, index) => (
+          // @ts-ignore 
           <GridPostList key={`page-${index}`} posts={item.documents} />
         ))}
       </div>
