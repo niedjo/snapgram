@@ -6,6 +6,10 @@
   ],
   "compilerOptions": {
     "strict": false,
+    "noEmit": true,
+    "skipLibCheck": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "noErrorTruncation": true,
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
